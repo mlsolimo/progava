@@ -71,7 +71,7 @@ public class Competencia {
 
 				double consistencia = participante.obtenerDistanciaTotal();
 
-				if (i == 1 || (consistencia > maxConsistencia)) {
+				if (i == 1 || (consistencia < maxConsistencia)) {
 					maxConsistencia = consistencia;
 					mayorConsistencia = i;
 				}
