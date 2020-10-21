@@ -38,4 +38,13 @@ public class Lanzamiento {
 			return true;
 		return false;
 	}
+
+	public double getDistancia() {
+		return distancia;
+	}
+
+	public double getAngulo() {
+		return angulo;
+	}
+	
 }
