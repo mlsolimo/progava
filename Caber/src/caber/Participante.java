@@ -37,9 +37,6 @@ public class Participante {
 		double anguloConsistencia=0;
 		double distanciaConsistencia=0;
 		
-		if(this.esDescalificado()) {
-			return 0;
-		}
 		
 		double lanz1 = lanzamientos.get(0).getDistancia();
 		double lanz2 = lanzamientos.get(1).getDistancia();
@@ -62,10 +59,11 @@ public class Participante {
 		boolean esDescalificado = false;
 		
 		for (Lanzamiento lanzamiento : lanzamientos) {
-			if(lanzamiento.validarAngulo()) {
+			if(!lanzamiento.validarAngulo()) {
 				esDescalificado = true;
 			}
 		}
 		return esDescalificado;
 	}
+
 }

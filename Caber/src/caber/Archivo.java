@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -19,13 +20,13 @@ public class Archivo {
 		Competencia comp = new Competencia();
 		try {
 
-			arch = new Scanner(new File(this.nombre + ".in"));
+			arch = new Scanner(new File("ArchivosPrueba\\"+this.nombre + ".in"));
 			arch.useLocale(Locale.ENGLISH);
 
 			int cantParticipantes = arch.nextInt();
 			double distancia, angulo;
 			for (int i = 0; i < cantParticipantes; i++) {
-				Participante p = new Participante();
+				Participante p = new Participante(new ArrayList<Lanzamiento>());
 				for (int j = 0; j < 3; j++) {
 
 					distancia = arch.nextDouble();
