@@ -34,22 +34,41 @@ public class Participante {
 	public double obtenerConsistencia() {
 		
 		double consistencia=0;
-		double anguloConsistencia=0;
-		double distanciaConsistencia=0;
 		
+		double mediaAngulo = 0;
+		double mediaDistancia = 0;
 		
-		double lanz1 = lanzamientos.get(0).getDistancia();
-		double lanz2 = lanzamientos.get(1).getDistancia();
-		double lanz3 = lanzamientos.get(2).getDistancia();
+		double varianzaAngulo = 0;
+		double varianzaDistancia = 0;
 		
-		double ang1 = lanzamientos.get(0).getAngulo();
-		double ang2 = lanzamientos.get(1).getAngulo();
-		double ang3 = lanzamientos.get(2).getAngulo();
+		double sumatoriaAngulo = 0;
+		double sumatoriaDistancia = 0; 
+		
+		int n = 0;
+		
+		if (esDescalificado())
+			return 0;
+		
+		for (Lanzamiento lanzamiento : lanzamientos) {
 			
-		anguloConsistencia = Math.abs(ang1 - ang2) + Math.abs(ang2 - ang3) + Math.abs(ang1 - ang3);
-		distanciaConsistencia = Math.abs(lanz1 - lanz2) + Math.abs(lanz2 - lanz3) + Math.abs(lanz1 - lanz3);
+			mediaAngulo += lanzamiento.getAngulo();
+			mediaDistancia += lanzamiento.getDistancia();
+			n++;
+		}
 		
-		consistencia = anguloConsistencia+distanciaConsistencia;
+		mediaAngulo = mediaAngulo / n;
+		mediaDistancia = mediaDistancia / n;
+		
+		for (Lanzamiento lanzamiento : lanzamientos) {
+			
+			sumatoriaAngulo += Math.pow(lanzamiento.getAngulo() - mediaAngulo, 2);
+			sumatoriaDistancia = Math.pow(lanzamiento.getDistancia() - mediaDistancia, 2);
+		}
+		
+		varianzaAngulo = sumatoriaAngulo / (n - 1);
+		varianzaDistancia = sumatoriaDistancia / (n - 1);
+		
+		consistencia = varianzaAngulo + varianzaDistancia;
 		
 		return consistencia;
 	}
