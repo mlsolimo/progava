@@ -46,9 +46,6 @@ public class Participante {
 		
 		int n = 0;
 		
-		if (esDescalificado())
-			return 0;
-		
 		for (Lanzamiento lanzamiento : lanzamientos) {
 			
 			mediaAngulo += lanzamiento.getAngulo();

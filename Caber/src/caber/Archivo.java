@@ -56,7 +56,7 @@ public class Archivo {
 			arch = new FileWriter(this.nombre + ".out");
 			pw = new PrintWriter(arch);
 
-			pw.println(comp.getMayorConsistencia());
+			pw.println(comp.getPodioConsistencia());
 			pw.println(comp.getPodioDistancia());
 
 		} catch (Exception e) {

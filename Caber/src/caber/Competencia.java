@@ -26,94 +26,97 @@ public class Competencia {
 
 		for (Participante participante : participantes) {
 
-			if (!participante.esDescalificado()) {
-
 				double distancia = participante.obtenerDistanciaTotal();
 
 				if (i == 1) {
 					distanciaPrimero = distancia;
 					podioDistancia[0] = i;
 				}
+				else {
+					
+					if (distancia >= distanciaPrimero) {
 
-				if (distancia >= distanciaPrimero) {
+						podioDistancia[2] = podioDistancia[1];
+						podioDistancia[1] = podioDistancia[0];
+						podioDistancia[0] = i;
 
-					podioDistancia[2] = podioDistancia[1];
-					podioDistancia[1] = podioDistancia[0];
-					podioDistancia[0] = i;
+						distanciaTercero = distanciaSegundo;
+						distanciaSegundo = distanciaPrimero;
+						distanciaPrimero = distancia;
 
-					distanciaTercero = distanciaSegundo;
-					distanciaSegundo = distanciaPrimero;
-					distanciaPrimero = distancia;
+					} else if (distancia >= distanciaSegundo) {
 
-				} else if (distancia >= distanciaSegundo) {
+						podioDistancia[2] = podioDistancia[1];
+						podioDistancia[1] = i;
 
-					podioDistancia[2] = podioDistancia[1];
-					podioDistancia[1] = i;
+						distanciaTercero = distanciaSegundo;
+						distanciaSegundo = distancia;
 
-					distanciaTercero = distanciaSegundo;
-					distanciaSegundo = distancia;
+					} else if (distancia > distanciaTercero) {
 
-				} else if (distancia > distanciaTercero) {
-
-					podioDistancia[2] = i;
-					distanciaTercero = distancia;
+						podioDistancia[2] = i;
+						distanciaTercero = distancia;
+					}
 				}
-
+				
 				i++;
 			}
-		}
 	}
 
 	public void obtenerPodioConsistencia() {
 
 		int i = 1;
 		double maxConsistencia = 0;
-		double consistenciaPrimero = 0;
-		double consistenciaSegundo = 0;
-		double consistenciaTercero = 0;
-
+		double consistenciaPrimero = 100;
+		double consistenciaSegundo = 100;
+		double consistenciaTercero = 100;
+		podioConsistencia  = new int[participantes.size()];
+		
+		
 		for (Participante participante : participantes) {
 
 			if (!participante.esDescalificado()) {
 
-				double consistencia = participante.obtenerConsistencia();  	// Entre mas grande sea el numero que devueva obtenerConsistencia, menor consistente 
-																			// sera el participante
+				double consistencia = participante.obtenerConsistencia();
+				
 				if (i == 1) {
 					consistenciaPrimero = consistencia;
-					podioDistancia[0] = i;
+					podioConsistencia[0] = i;
 				}
+				else {
+					
+					if (consistencia <= consistenciaPrimero) {
 
-				if (consistencia <= consistenciaPrimero) {
+						podioConsistencia[2] = podioConsistencia[1];
+						podioConsistencia[1] = podioConsistencia[0];
+						podioConsistencia[0] = i;
 
-					podioDistancia[2] = podioDistancia[1];
-					podioDistancia[1] = podioDistancia[0];
-					podioDistancia[0] = i;
+						consistenciaTercero = consistenciaSegundo;
+						consistenciaSegundo = consistenciaPrimero;
+						consistenciaPrimero = consistencia;
 
-					consistenciaTercero = consistenciaSegundo;
-					consistenciaSegundo = consistenciaPrimero;
-					consistenciaPrimero = consistencia;
+					} else if (consistencia <= consistenciaSegundo) {
 
-				} else if (consistencia <= consistenciaSegundo) {
+						podioConsistencia[2] = podioConsistencia[1];
+						podioConsistencia[1] = i;
 
-					podioDistancia[2] = podioDistancia[1];
-					podioDistancia[1] = i;
+						consistenciaTercero = consistenciaSegundo;
+						consistenciaSegundo = consistencia;
 
-					consistenciaTercero = consistenciaSegundo;
-					consistenciaSegundo = consistencia;
+					} else if (consistencia < consistenciaTercero) {
 
-				} else if (consistencia < consistenciaTercero) {
+						podioConsistencia[2] = i;
+						consistenciaTercero = consistencia;
+					}
 
-					podioDistancia[2] = i;
-					consistenciaTercero = consistencia;
 				}
-
-				i++;
-			}
-
+			}	
+			
+			i++;
 		}
 	}
 
-	public int[] getMayorConsistencia() {
+	public int[] getPodioConsistencia() {
 
 		return this.podioConsistencia;
 	}
