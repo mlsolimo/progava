@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import junit.framework.Assert;
+
 public class ParticipanteTest {
 
 	@Test
@@ -55,7 +57,7 @@ public class ParticipanteTest {
 		
 		System.out.println(resultadoEsperado);
 		System.out.println(resultadoObtenido);
-		assertEquals(resultadoEsperado, resultadoObtenido);
+		Assert.assertEquals(resultadoEsperado, resultadoObtenido);
 	}
 	
 	
