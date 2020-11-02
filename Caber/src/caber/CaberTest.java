@@ -10,7 +10,7 @@ public class CaberTest {
 	public void test() {
 		
 		Archivo arch = new Archivo("PruebaEnunciado");	
-		Competencia comp = arch.leerYProcesar();
+		Competencia comp = arch.leer();
 		arch.escribir(comp);
 		
 	}

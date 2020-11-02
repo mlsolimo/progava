@@ -15,7 +15,7 @@ public class Archivo {
 		this.nombre = nombre;
 	}
 
-	public Competencia leerYProcesar() {
+	public Competencia leer() {
 		Scanner arch = null;
 		Competencia comp = new Competencia();
 		try {

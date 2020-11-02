@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Competencia {
 	private ArrayList<Participante> participantes;
-	private int mayorConsistencia = 0;
 	private int[] podioDistancia;
 	private int[] podioConsistencia;
 
@@ -66,7 +65,6 @@ public class Competencia {
 	public void obtenerPodioConsistencia() {
 
 		int i = 1;
-		double maxConsistencia = 0;
 		double consistenciaPrimero = 100;
 		double consistenciaSegundo = 100;
 		double consistenciaTercero = 100;
