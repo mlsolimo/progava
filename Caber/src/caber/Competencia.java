@@ -65,10 +65,10 @@ public class Competencia {
 	public void obtenerPodioConsistencia() {
 
 		int i = 1;
-		double consistenciaPrimero = 100;
-		double consistenciaSegundo = 100;
-		double consistenciaTercero = 100;
-		podioConsistencia  = new int[participantes.size()];
+		double consistenciaPrimero = 1000;
+		double consistenciaSegundo = 1000;
+		double consistenciaTercero = 1000;
+		podioConsistencia  = new int[3];
 		
 		
 		for (Participante participante : participantes) {
