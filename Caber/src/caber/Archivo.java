@@ -56,8 +56,15 @@ public class Archivo {
 			arch = new FileWriter(this.nombre + ".out");
 			pw = new PrintWriter(arch);
 
-			pw.println(comp.getPodioConsistencia());
-			pw.println(comp.getPodioDistancia());
+			for (int participante : comp.getPodioConsistencia()) {
+				if(participante != 0)
+					pw.print(participante+" ");
+			}
+			pw.println();
+			for (int participante : comp.getPodioDistancia()) {
+				if(participante != 0)
+					pw.print(participante+" ");
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
