@@ -30,8 +30,6 @@ public class LanzamientoTest {
 		Lanzamiento l1 = new Lanzamiento(1.0, 100);
 		double distancia = l1.calcularDistancia();
 
-		System.out.println(distancia);
-		System.out.println(0.0);
 		Assert.assertEquals(0.0, distancia);
 	}
 
