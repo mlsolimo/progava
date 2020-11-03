@@ -61,13 +61,13 @@ public class Competencia {
 				i++;
 			}
 	}
-
+	
 	public void obtenerPodioConsistencia() {
 
 		int i = 1;
-		double consistenciaPrimero = 1000;
-		double consistenciaSegundo = 1000;
-		double consistenciaTercero = 1000;
+		double consistenciaPrimero = -1;
+		double consistenciaSegundo = -1;
+		double consistenciaTercero = -1;
 		podioConsistencia  = new int[3];
 		
 		
@@ -76,7 +76,7 @@ public class Competencia {
 			if (!participante.esDescalificado()) {
 
 				double consistencia = participante.obtenerConsistencia();
-				
+				System.out.println(consistencia);
 				if (i == 1) {
 					consistenciaPrimero = consistencia;
 					podioConsistencia[0] = i;
@@ -93,7 +93,7 @@ public class Competencia {
 						consistenciaSegundo = consistenciaPrimero;
 						consistenciaPrimero = consistencia;
 
-					} else if (consistencia <= consistenciaSegundo) {
+					} else if (consistencia <= consistenciaSegundo || consistenciaSegundo == -1) {
 
 						podioConsistencia[2] = podioConsistencia[1];
 						podioConsistencia[1] = i;
@@ -101,7 +101,7 @@ public class Competencia {
 						consistenciaTercero = consistenciaSegundo;
 						consistenciaSegundo = consistencia;
 
-					} else if (consistencia < consistenciaTercero) {
+					} else if (consistencia < consistenciaTercero || consistenciaTercero == -1) {
 
 						podioConsistencia[2] = i;
 						consistenciaTercero = consistencia;
@@ -109,7 +109,6 @@ public class Competencia {
 
 				}
 			}	
-			
 			i++;
 		}
 	}

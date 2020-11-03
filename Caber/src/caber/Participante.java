@@ -6,6 +6,7 @@ public class Participante {
 
 	private ArrayList<Lanzamiento> lanzamientos;
 	
+	
 	public Participante(ArrayList<Lanzamiento> lanzamientos) {
 		this.lanzamientos = lanzamientos;
 	}
