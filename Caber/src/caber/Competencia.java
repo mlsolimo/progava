@@ -10,6 +10,7 @@ public class Competencia {
 	public Competencia() {
 		participantes = new ArrayList<Participante>();
 		podioDistancia = new int[3];
+		podioConsistencia = new int[3];
 	}
 
 	public boolean agregar(Participante part) {
@@ -68,7 +69,6 @@ public class Competencia {
 		double consistenciaPrimero = -1;
 		double consistenciaSegundo = -1;
 		double consistenciaTercero = -1;
-		podioConsistencia  = new int[3];
 		
 		
 		for (Participante participante : participantes) {
@@ -76,7 +76,7 @@ public class Competencia {
 			if (!participante.esDescalificado()) {
 
 				double consistencia = participante.obtenerConsistencia();
-				System.out.println(consistencia);
+				
 				if (i == 1) {
 					consistenciaPrimero = consistencia;
 					podioConsistencia[0] = i;
